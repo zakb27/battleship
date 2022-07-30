@@ -29,6 +29,6 @@ const startGame=(name)=>{
     const user = new Player(name);
     const ai = new AI("Enemy",user,userBoard);
     while(!userBoard.checkEnd() || !userBoard.checkEnd()){
-        
+
     }
 }
