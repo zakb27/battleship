@@ -41,5 +41,13 @@ describe('game',()=>{
         expect(tester.checkEnd()).toEqual(true)
     })
 
+    test('Can get location from inputting a ship ',()=>{
+        const tester = new Gameboard();
+        const ship = new Ship(3);
+        const ship2 = new Ship(1);
+        tester.placeShip(ship,4,4,'x');
+        expect(tester.getLocations(ship)).toEqual([ [ 4, 4 ], [ 5, 4 ], [ 6, 4 ] ])
+    })
+
 
 })

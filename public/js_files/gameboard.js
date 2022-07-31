@@ -5,6 +5,7 @@ export class Gameboard{
     constructor(){
         this.gameBoard = this.createBoard();
         this.misses = [];
+        this.placed_ships=0;
     }
 
     createBoard(){
@@ -20,7 +21,17 @@ export class Gameboard{
         }
         return shipArray;
     }
-
+    getLocations(ship){
+        let locations = [];
+        for(let i=0;i<10;i++){
+            for(let z=0;z<10;z++){
+                if (this.gameBoard[i][z].shipID !=null) {
+                        locations.push([i,z]);
+                    }
+                }
+            }
+        return locations;
+    }
     checkPositionX(length,x,y){
         for(let i=x;i<(x+length);i++){
             if(this.gameBoard[i][y].shipID!=null){
@@ -62,7 +73,9 @@ export class Gameboard{
                     for (let i = y; i < (y + ship.size); i++) {
                         this.gameBoard[x][i].shipID = ship;
                         this.gameBoard[x][i].shipNum = i-y;
+
                     }
+                    this.placed_ships++;
                 }
             }
             else{
@@ -74,11 +87,12 @@ export class Gameboard{
                         this.gameBoard[i][y].shipID=ship;
                         this.gameBoard[i][y].shipNum=i-x;
                     }
+                    this.placed_ships++;
                 }
             }
         }
         catch(error){
-            console.log('Incorrect placement error')
+            console.log("Cannot place here");
         }
     }
 
@@ -93,13 +107,30 @@ export class Gameboard{
         }
     }
 
+    getHits(){
+        let locations = [];
+        for(let i=0;i<10;i++){
+            for(let z=0;z<10;z++){
+                if(this.gameBoard[i][z].shipID !=null) {
+                    if (this.gameBoard[i][z].shipID.hits == null) {
+                        continue;
+                    }
+                    if (this.gameBoard[i][z].shipID.hits[this.gameBoard[i][z].shipNum]) {
+                        locations.push([i, z]);
+                    }
+                }
+            }
+        }
+        return locations;
+    }
+
 
     checkEnd() {
         let end = true;
         this.gameBoard.forEach((item) => {
             item.forEach((element) => {
                 if (element.shipID) {
-                    if (element.shipID.isSunk() == false) {
+                    if (element.shipID.isSunk() === false) {
                         end = false;
                     }
                 }
