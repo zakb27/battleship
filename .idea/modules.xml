@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../etch-a-sketch/.idea/Odin-Projects.iml" filepath="$PROJECT_DIR$/../etch-a-sketch/.idea/Odin-Projects.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/battleship.iml" filepath="$PROJECT_DIR$/.idea/battleship.iml" />
     </modules>
   </component>

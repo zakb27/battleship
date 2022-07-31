@@ -1,4 +1,4 @@
-import {Ship} from '../js_files/ship.js';
+import {Ship} from './ship.js';
 
 export class Gameboard{
 

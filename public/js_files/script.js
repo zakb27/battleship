@@ -1,12 +1,7 @@
-import {Player} from '../js_files/player.js';
-import {AI} from '../js_files/ai.js';
-import {Gameboard} from '../js_files/gameboard.js';
-import {Ship} from '../js_files/ship.js';
-
-
-
-
-
+import {Player} from './player.js';
+import {AI} from './ai.js';
+import {Gameboard} from './gameboard.js';
+import {Ship} from './ship.js';
 
 
 
@@ -28,7 +23,34 @@ const startGame=(name)=>{
 
     const user = new Player(name);
     const ai = new AI("Enemy",user,userBoard);
-    while(!userBoard.checkEnd() || !userBoard.checkEnd()){
-
-    }
+    // while(!userBoard.checkEnd() || !userBoard.checkEnd()){
+    //
+    // }
 }
+
+
+const createSelBoard = () =>{
+    let grid_container = document.querySelector(`.grid_container`);
+
+    for(let i =0;i<10;i++){
+        console.log('here');
+        for(let j=0;j<10;j++) {
+            const div = document.createElement('div');
+            div.className = 'grid_item';
+            div.id = i.toString() + j.toString();
+            grid_container.appendChild(div);
+        }
+    }
+
+}
+
+createSelBoard();
+
+const current = document.querySelectorAll('.grid_item');
+
+current.forEach((button)=>{
+    button.addEventListener('click',()=>{
+        button.style.backgroundColor='blue';
+    })
+})
+
