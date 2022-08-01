@@ -87,12 +87,6 @@ button:hover{
 
 
 
-
-
-
-
-
-
 .full_game{
     background-color: rgb(33, 38, 58);
     height:100%;
@@ -111,6 +105,7 @@ button:hover{
     background-color: rgba(128, 128, 128, 0.8);
     display: flex;
     flex-wrap: wrap;
+    border-radius: 5px;
 
 }
 .ai_grid_container{
@@ -131,6 +126,50 @@ button:hover{
 
 
 .shoot:hover{
-    transition: 0.3s;
+    transition: 0.1s;
     background-color: lightblue;
+}
+
+.scores{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+    background-color: #d2d2d2;
+    padding:50px;
+    color: #1b2531;
+}
+.user_score p, .ai_score p{
+    font-size: 5rem;
+}
+
+
+footer{
+    padding:20px;
+    background-color: rgb(51, 55, 84);
+    color: silver;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    gap:5px;
+}
+
+footer a{
+    color: silver;
+    text-decoration: none;
+}
+
+#git{
+    font-size: 3rem;
+    margin-top:-10px;
+}
+#git:hover{
+    transition: 0.5s ;
+    transform: rotate(360deg);
+}
+footer a:hover{
+    color:white;
 }

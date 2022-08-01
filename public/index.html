@@ -5,6 +5,7 @@
     <title>BattleShip</title>
     <link href="styles.css" rel="stylesheet">
     <script type="module" src="./js_files/script.js" defer></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
 </head>
 <body>
@@ -24,13 +25,32 @@
 </div>
 
 <div class="full_game">
-    <div class="user_grid_container">
+    <div class="user_container">
+        <h2>User Grid</h2>
+        <div class="user_grid_container">
+        </div>
     </div>
-    <div class="ai_grid_container">
+    <div class="scores">
+        <div class="user_score">
+            <h3>User Score </h3>
+            <p id="score1">0</p>
+        </div>
+        <div class="ai_score">
+            <h3>AI Score </h3>
+            <p id="score2">0</p>
+        </div>
     </div>
-
+    <div class="ai_container">
+        <h2>AI Grid</h2>
+        <div class="ai_grid_container">
+        </div>
+    </div>
 
 
 </div>
+<footer>
+    <a id = 'git'href="https://github.com/zakb27"><i class="uil uil-github"></i></a>
+    <a id = 'git_text'href="https://github.com/zakb27"><p id='link_text'>Made by Zak Brook</p></a>
+</footer>
 </body>
 </html>

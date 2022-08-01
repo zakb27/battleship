@@ -103,13 +103,22 @@ const renderHits = (board,version)=>{
         document.getElementById(
             version+list[i][0].toString()+list[i][1].toString()).
             style.backgroundColor="red";
+
+
     }
     for (let i=0;i<list2.length;i++){
         document.getElementById(
             version+list2[i].x.toString()+list2[i].y.toString()).
             style.backgroundColor="lightblue";
+
     }
 
+}
+const renderScore =() =>{
+    const item1 = document.querySelector('#score1')
+    const item2= document.querySelector('#score2')
+    item1.textContent = aiBoard.getHits().length;
+    item2.textContent = userBoard.getHits().length;
 }
 
 const playGame =()=>{
@@ -119,38 +128,43 @@ const playGame =()=>{
     game_container.style.display = 'flex';
     render(userBoard, 'u');
     randomShip()
-
     const possible_sink = document.querySelectorAll('.shoot');
 
     possible_sink.forEach((button)=>{
 
-        button.addEventListener('click',()=>{
-            button.style.color= 'green';
-            console.log('here');
-            playRound(button.id);
-        })
+        button.addEventListener('click',(event)=>{
+
+            playRound(button);
+
+        },{once : true});
+
     })
+
 }
 
 const playRound = (item)=>{
-    user.move(parseInt(item[1]),parseInt(item[2]),ai,aiBoard);
+
+    user.move(parseInt(item.id[1]), parseInt(item.id[2]), ai, aiBoard);
+
     renderHits(aiBoard,'a');
+    renderScore();
     if(aiBoard.checkEnd()){
-        alert("GAME END");
+        alert("You Win");
         window.location.reload();
     }
     ai.randomAttack(user,userBoard);
     renderHits(userBoard,'u');
     if(userBoard.checkEnd()){
-        alert("GAME END");
+        alert("You Lose");
         window.location.reload();
     }
+    renderScore();
+
 }
 
 
 createSelBoard();
 const current = document.querySelectorAll('.grid_item');
-
 let axis ='x';
 
 const axis_button = document.querySelector('.axis');

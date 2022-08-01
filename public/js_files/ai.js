@@ -16,7 +16,16 @@ export class AI extends Player{
                     x: Math.floor((Math.random() * 10)),
                     y: Math.floor((Math.random() * 10))
                 }
-                if(!this.attacks.includes(random)){
+                const isFound = this.attacks.some(element => {
+                    if (element.x === random.x && element.y === random.y) {
+                        return true;
+                    }
+
+                    return false;
+                });
+
+                if(!isFound){
+                    console.log(this.attacks,random);
                     this.attacks.push(random);
                     this.move(random.x,random.y,user,userBoard);
                     break;
