@@ -58,9 +58,10 @@ const randomShip = () =>{
             a='x';
         }
         placeShip(aiBoard,x,y,count,a)
-        if(aiBoard.placed_ships>temp){
+        if(aiBoard.placed_ships>temp && aiBoard.placed_ships!=3){
             count--;
         }
+
     }
 }
 
@@ -155,10 +156,11 @@ let axis ='x';
 const axis_button = document.querySelector('.axis');
 const reset = document.querySelector('#reset');
 const current_axis = document.querySelector('.current_axis');
-const select_grid = document.querySelector('.something');
+const select_grid = document.querySelector('.select_container');
 const game_container = document.querySelector('.full_game');
 game_container.style.display = 'none';
 const start = document.querySelector('.start');
+start.style.visibility='hidden';
 
 
 current.forEach((button)=>{
@@ -166,8 +168,13 @@ current.forEach((button)=>{
         if(userBoard.placed_ships<5) {
             placingContainer(button.id);
             render(userBoard,'s');
+            if(userBoard.placed_ships===5){
+                start.style.visibility='visible';
+            }
         }
     })
+
+
 })
 axis_button.addEventListener('click',()=>{
     axis = (axis === "x" ? "y" : "x");
@@ -178,5 +185,7 @@ start.addEventListener('click',()=>{
         playGame();
     }
 })
-
+reset.addEventListener('click',()=>{
+    window.location.reload();
+})
 
